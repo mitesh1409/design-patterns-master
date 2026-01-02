@@ -45,3 +45,53 @@ const logger = Logger.getInstance();
 
 Use Singleton design pattern when you genuinely need single instance guarantee,  
 not when you just want a global state.
+
+Example  
+
+```TypeScript
+// Logger.ts
+
+export default class Logger {
+    // 1. Hold the single instance in a private static property
+    private static instance: Logger;
+
+    // 2. Make the constructor private so no one can call 'new Logger()'
+    private constructor() {
+        // Optional: Initialization logic (e.g., setting up log levels)
+    }
+
+    // 3. The static method to control access to the instance
+    public static getInstance(): Logger {
+        if (!Logger.instance) {
+            Logger.instance = new Logger();
+        }
+        return Logger.instance;
+    }
+
+    private getTimestamp(): string {
+        return new Date().toISOString();
+    }
+
+    // Logging methods
+    public log(...args: any[]): void {
+        console.log(`[${this.getTimestamp()}] LOG:`, ...args);
+    }
+
+    public info(...args: any[]): void {
+        console.info(`[${this.getTimestamp()}] INFO:`, ...args);
+    }
+
+    public error(...args: any[]): void {
+        console.error(`[${this.getTimestamp()}] ERROR:`, ...args);
+    }
+}
+
+// Usage:
+const logger = Logger.getInstance();
+logger.log("Application started");
+logger.error("Something went wrong", { code: 500 });
+
+// This will be the same instance as 'logger' above
+const anotherLogger = Logger.getInstance(); 
+console.log(logger === anotherLogger); // true
+```
