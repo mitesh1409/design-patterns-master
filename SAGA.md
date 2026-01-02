@@ -193,15 +193,15 @@ Services dance to the beats of events.
 
 - Debugging is tough
     Tracing the full transaction means stitching together events across logs  
-    and you need strong guarantees from Kafka like at least once delivery  
+    and you need strong guarantees from Kafka, like at least once delivery  
     and idempotency in services.
 
 #### When to use what?
 
 Use **Orchestration** for  
 
-* Simpler debugging
 * Simpler imlementation
+* Simpler debugging
 * Centralized control
 * Detailed audit logs/audit trails
 
