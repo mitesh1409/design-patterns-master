@@ -11,6 +11,8 @@
 
 Singleton
 
+Builder
+
 Factory
 
 Eventual Consistency
