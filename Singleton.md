@@ -95,3 +95,23 @@ logger.error("Something went wrong", { code: 500 });
 const anotherLogger = Logger.getInstance(); 
 console.log(logger === anotherLogger); // true
 ```
+
+**How the Singleton Pattern Works**  
+
+The Singleton pattern restricts the instantiation of a class to one "single" instance. This is useful when exactly one object is needed to coordinate actions across the system.
+
+**The Three Core Ingredients:**  
+
+1. Private Static Property (instance):  
+This acts as the storage for our single instance.  
+Because it’s static, it belongs to the class itself, not to any specific object.
+
+2. Private Constructor:  
+By marking the constructor private, you prevent the use of the new keyword  
+outside of the class. If you try `const log = new Logger()`,  
+TypeScript will throw an error.
+
+3. Static Getter Method (`getInstance`):  
+This is the "gatekeeper".  
+If the instance doesn't exist yet, it creates one.  
+If it already exists, it simply returns the existing one.
