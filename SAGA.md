@@ -4,6 +4,10 @@ SAGA is a Design Pattern used to handle **Distributed Transactions** in Microser
 
 ## Introduction to Distributed Transactions
 
+The core idea behind Distributed Transactions is to ensure that  
+all operations within the transaction either succeed together or fail together.  
+This guarantees data consistency across different part of the system.
+
 **Monolith**  
 
 In an application based on Monolith architecture we have a single database.
@@ -18,6 +22,7 @@ Consider a flight booking system, a user journey may look like the following:
 
 Now what if one of these operations fails.  
 For example,  
+
 - we don't want to deduct user's money without a confirmed flight ticket.
 - we don't want to reserve a seat if payment fails.
 etc.
@@ -36,7 +41,7 @@ This is how we can keep application data consistent in a Monolith application.
 
 ---
 
-**Microservices**
+**Microservices**  
 
 In an application based on Microservices architecture we have multiple databases,  
 each service has its own database.
@@ -51,6 +56,7 @@ Consider the same flight booking system, a user journey may look like the follow
 
 Now what if one of these operations fails.  
 For example,  
+
 - we don't want to deduct user's money without a confirmed flight ticket.
 - we don't want to reserve a seat if payment fails.
 etc.
@@ -90,40 +96,142 @@ Common approaches to handle distributed transactions are:
 * **Blocking Nature:** If the coordinator fails, participant nodes are stuck waiting, often requiring manual intervention. It is often called an "anti-availability" protocol.
 * **Mitigation:** High-availability groups (like Paxos in Google Spanner) can help, but complexity remains high.
 
-## The Saga Pattern: An Alternative
+## The Saga Pattern (Most commonly used)
 
 SAGA Pattern is used to handle **Distributed Transactions** in Microservices.
 
-* Sagas are more flexible for microservices. They consist of a sequence of **local transactions**.
-* If a local transaction fails, **compensating transactions** are executed to undo the changes made by previous successful steps.
-* **Example (Flight Booking):** Steps include reserving a seat, charging a card, and booking a hotel. If charging the card fails, the seat reservation is canceled.
+SAGA Pattern = local transactions + compensating transactions (to reverse/rollback changes done by local transactions)
 
-## Implementation Types: Orchestration vs. Choreography
+Where,  
+local transactions = each updating a single service
+compensating transactions = to reverse/rollback changes done by local transactions
 
-* **Orchestrated Saga:**  
-A central **Saga Orchestrator** manages the flow, sending explicit commands to services and tracking progress. It handles retries and triggers compensations if a service fails.
-* **Choreographed Saga [[08:55](http://www.youtube.com/watch?v=d2z78guUR4g&t=535)]:** There is no central coordinator. Services communicate directly through events. Each service listens for specific events and reacts autonomously.
+A compensating transaction will undo changes done by a local transaction.
 
-## Comparing Orchestration and Choreography
+In SAGA Pattern, we split distributed transactions into a set of local transactions,  
+each local transaction has a compensating transaction.  
+If anything goes wrong (one of the local transaction fails),  
+then we use compensating transactions to reverse/rollback changes done by local transaction.
 
-* **Orchestration:** Simpler implementation for individual services and provides a clear audit trail. However, the orchestrator can be a single point of failure.
-* **Choreography:** More independent and scalable with no central bottleneck, but harder to implement and trace due to decentralized logic.
+For example, consider the flight booking system with the following user journey:  
 
-## Design Flow of an Orchestrated Saga
+1. Reserve one or more seats
+    Flight Ticket Reservation Service  
+    local transaction => reserve a seat  
+    compensating transaction => release a seat
 
-1. User initiates a request.
-2. Orchestrator commands **Flight Service** (Reserve seat).
-3. If successful, Orchestrator commands **Payment Service** (Process payment).
-4. If successful, it proceeds to Hotel and Car services.
-5. Finally, **Notification Service** sends an email.
-6. **Failure Handling:** If payment fails at, the orchestrator triggers a compensation to release the reserved seat in the Flight Service.
+2. Complete payment
+    Payment Service  
+    local transaction => Payment Transaction  
+    compensating transaction => Refund Transaction
 
-## Key Differences: 2PC vs. Saga Pattern
+3. Book one or more hotel rooms
+    Hotel Room Booking Service  
+    local transaction => Book a hotel room  
+    compensating transaction => Cancel booking
 
-* **Communication:** 2PC is synchronous (blocking); Sagas are primarily asynchronous (event-driven).
-* **Consistency:** 2PC provides **Strong Atomicity**; Sagas provide **Eventual Consistency**.
-* **Flexibility:** Sagas are more resilient to failures and better for long-running transactions.
-* **Resource Locking:** 2PC locks resources (causing contention); Sagas use local transactions without global locking.
+4. Rent a car for transportation
+    Transportation Service  
+    local transaction => Book a transportation service  
+    compensating transaction => Cancel booking  
+
+5. Notifications
+    Notification Service  
+    local transaction => Send success notifications (flight tickets booked, hotel room booked, transportation service booked etc.)  
+    compensating transaction => Send failure notifications (flight tickets canceled, hotel room booking canceled, transportation service booking canceled etc.)
+
+### Implementation Types: Orchestration vs. Choreography
+
+SAGA can be implemented in two ways:  
+
+1. Orchestration
+2. Choreography
+
+#### Orchestrated Saga
+
+One central service/**Saga Orchestrator** controls the flow.
+
+Like a symfony orchestra, there is a central **Saga Orchestrator** who manages the flow,  
+it sends explicit commands to services and tracks progress.  
+It handles retries and triggers compensations if a service fails.
+
+The **Saga Orchestrator** explicitly tells each service what action to take.  
+For example,  
+it can ask Flight Ticket Reservation Service to reserve a seat,  
+it can ask Payment Service to do payment transaction  
+etc.
+
+The **Saga Orchestrator** waits for the response from each service before moving to the next operation.
+
+**Saga Orchestrator** can be a different microservice or it can sit inside any of the existing microservices  
+which are part of the distributed transaction.
+
+**Pros**  
+
+- Clear control flow, we know what is happening and when
+- Great for debugging and logging
+
+**Cons**  
+
+- SAGA Orchestrator can become a single point of failure, if it goes down the whole flow if blocked.
+
+#### Choreographed Saga
+
+There is no central coordinator.  
+Services communicate directly through events.  
+Each service listens for specific events and reacts autonomously.
+
+Services dance to the beats of events.
+
+**Pros**  
+
+- Loosely coupled
+    Services are independent, they can be deployed separately,  
+    they can be scaled separately, react to events in real time.
+
+**Cons**  
+
+- Debugging is tough
+    Tracing the full transaction means stitching together events across logs  
+    and you need strong guarantees from Kafka like at least once delivery  
+    and idempotency in services.
+
+#### When to use what?
+
+Use **Orchestration** for  
+
+* Simpler debugging
+* Simpler imlementation
+* Centralized control
+* Detailed audit logs/audit trails
+
+Use **Choreography** for  
+
+* Highly distributed scalable system with lots of independent services
+* Loosely coupled systems where decentralized logic is preferred
+
+Many companies mix both - **Orchestration** for critical flows like payments and  
+**Choreography** for notifications, analytics and less sensitive tasks.
+
+#### Orchestration Vs Choreography
+
+**Orchestration**  
+Simpler implementation for individual services and provides a clear audit trail.  
+However, the orchestrator can be a single point of failure.
+
+**Choreography**  
+More independent and scalable with no central bottleneck, but harder to implement and trace due to decentralized logic.
+
+## 2PC vs. Saga Pattern
+
+| Aspect | Two-Phase Commit (2PC) | Saga |
+| :--- | :--- | :--- |
+| Coordination | Central Coordinator | Orchestrated (Central Saga) or Choreographed (events) |
+| Communication | Synchronous (Blocking) | Asynchronous |
+| Atomicity | Strong Atomicity | Eventual consistency, uses compensating transactions |
+| Flexibility & Resilience | Less flexible, single point of failure | More flexible, resilient, no single point of failure |
+| Performance | Slower, participants need to wait | Faster, independent operations |
+| Use Cases | Strong consistency, limited participants | Long-running, complex transactions, multiple services, eventual consistency |
 
 ## Summary & Key Pointers
 
