@@ -1,4 +1,4 @@
-# Design Patterns > SAGA
+# Design Patterns - SAGA
 
 SAGA is a Design Pattern used to handle **Distributed Transactions** in Microservices.
 

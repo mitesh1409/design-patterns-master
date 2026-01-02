@@ -1,4 +1,4 @@
-# Design Patterns > Event Sourcing
+# Design Patterns - Event Sourcing
 
 ## Introduction to Event Sourcing
 

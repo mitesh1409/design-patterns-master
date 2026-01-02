@@ -1,4 +1,4 @@
-# Design Patterns > CQRS
+# Design Patterns - CQRS
 
 ## What is CQRS?
 
@@ -20,7 +20,7 @@ Command (Write operations) & Query (Read operations) are completely different pa
 they don't cross/interfere each other. So it is easy to seperate them.  
 
 If system is becoming slow as traffic is increasing,  
-it could be because you are not separating reads and writes.
+it could be because we are not separating reads and writes.
 
 ## Examples
 
@@ -35,10 +35,10 @@ while the query side retrieves transaction history or account balances.
 ## Benefits
 
 By separating these two operations,  
-you can optimize each part of the system independently.
+we can optimize each part of the system independently.
 
 This pattern improves scalability, especially when reads significantly outnumber writes or  
-when different parts of your system require eventual consistency.
+when different parts of the system require eventual consistency.
 
 ## How to implement CQRS?
 
@@ -54,7 +54,7 @@ Query -> Query Handler -> Read Model -> Read Database
 CQRS implementation key point is - Commands don't directly change data,  
 but they trigger actions that lead to changes.
 
-You might opt for simple and cost effective S3 Buckets for the Command/Write Database,  
+We might opt for simple and cost effective S3 Buckets for the Command/Write Database,  
 and select a database with superior query capabilities such as Elastic Search for the  
 Query/Read Database.  
 
