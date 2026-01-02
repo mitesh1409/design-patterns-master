@@ -1,10 +1,78 @@
 # Design Patterns > SAGA
 
+SAGA is a Design Pattern used to handle **Distributed Transactions** in Microservices.
+
 ## Introduction to Distributed Transactions
 
-* In modern applications, a single user action (like booking a flight) often triggers multiple operations across different services (payment, seating, email).
-* **Distributed Transactions** ensure all these operations either succeed or fail together, maintaining data consistency across the system.
-* **ACID Properties:** Database Management Systems (DBMS) use ACID (Atomicity, Consistency, Isolation, Durability) to manage transactions within a single database.
+**Monolith**  
+
+In an application based on Monolith architecture we have a single database.
+
+Consider a flight booking system, a user journey may look like the following:  
+
+1. Reserve one or more seats -> flight_reservations, tickets
+2. Complete payment -> payment_transactions
+3. Book one or more hotel rooms -> hotel_bookings
+4. Rent a car for transportation -> transportation_bookings
+5. Notifications -> notifications
+
+Now what if one of these operations fails.  
+For example,  
+- we don't want to deduct user's money without a confirmed flight ticket.
+- we don't want to reserve a seat if payment fails.
+etc.
+
+Operations 1 to 5 can be done within a single database transaction,  
+so if any one of them fails we rollback all other operations.
+
+Single big atomic transaction, which can be rolled back if anything goes wrong.
+
+In a Monolith application with single database we can do this easilty using database transactions,  
+since everything (all data/tables) is at one place.
+
+Database Management Systems (DBMS) use ACID (Atomicity, Consistency, Isolation, Durability) to manage transactions within a single database.
+
+This is how we can keep application data consistent in a Monolith application.
+
+---
+
+**Microservices**
+
+In an application based on Microservices architecture we have multiple databases,  
+each service has its own database.
+
+Consider the same flight booking system, a user journey may look like the following:  
+
+1. Reserve one or more seats -> Flight Ticket Reservation Service
+2. Complete payment -> Payment Service
+3. Book one or more hotel rooms -> Hotel Room Booking Service
+4. Rent a car for transportation -> Transportation Service
+5. Notifications -> Notification Service
+
+Now what if one of these operations fails.  
+For example,  
+- we don't want to deduct user's money without a confirmed flight ticket.
+- we don't want to reserve a seat if payment fails.
+etc.
+
+Here operations are happening in their own service & database as described above,  
+we are having distributed transactions here.
+
+Distributed transactions are transactions that span multiple microservices and databases,  
+requiring coordination over a network to maintain consistency.  
+They are called distributed because the transaction logic and data are spread across  
+multiple microservices and databases.  
+All the operations involved in the distributed transaction must either succeed or  
+fail together to maintain data consistency.
+
+Since a distributed transaction span multiple databases,  
+we cannot simply rollback it like we do in case of Monolith.
+
+Common approaches to handle distributed transactions are:  
+
+1. Two-Phase Commit (2PC) Protocol
+2. SAGA Pattern (Most Common)
+3. Eventual Consistency
 
 ## Two-Phase Commit (2PC) Protocol
 
@@ -15,7 +83,7 @@
 
 * **Implementation:** Often uses tools like **Zookeeper** for coordination.
 
-## Challenges and Drawbacks of 2PC
+### Challenges and Drawbacks of 2PC
 
 * **Performance:** Introduces latency due to synchronous communication and coordination steps.
 * **Deadlocks:** Services may wait on each other to release resources.
@@ -24,13 +92,16 @@
 
 ## The Saga Pattern: An Alternative
 
+SAGA Pattern is used to handle **Distributed Transactions** in Microservices.
+
 * Sagas are more flexible for microservices. They consist of a sequence of **local transactions**.
 * If a local transaction fails, **compensating transactions** are executed to undo the changes made by previous successful steps.
 * **Example (Flight Booking):** Steps include reserving a seat, charging a card, and booking a hotel. If charging the card fails, the seat reservation is canceled.
 
 ## Implementation Types: Orchestration vs. Choreography
 
-* **Orchestrated Saga [[07:46](http://www.youtube.com/watch?v=d2z78guUR4g&t=466)]:** A central **Saga Orchestrator** manages the flow, sending explicit commands to services and tracking progress. It handles retries and triggers compensations if a service fails.
+* **Orchestrated Saga:**  
+A central **Saga Orchestrator** manages the flow, sending explicit commands to services and tracking progress. It handles retries and triggers compensations if a service fails.
 * **Choreographed Saga [[08:55](http://www.youtube.com/watch?v=d2z78guUR4g&t=535)]:** There is no central coordinator. Services communicate directly through events. Each service listens for specific events and reacts autonomously.
 
 ## Comparing Orchestration and Choreography
