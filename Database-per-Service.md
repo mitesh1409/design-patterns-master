@@ -144,3 +144,4 @@ Each service:
 ## References
 
 * [Ultimate Guide to Database Per Service pattern in Microservices](https://www.youtube.com/watch?v=DKQLhy9bgdk&list=PLJq-63ZRPdBsPWE24vdpmgeRFMRQyjvvj&index=6)
+* [Database per Service Pattern in Microservices](https://www.youtube.com/watch?v=la2q1vFA5q0)
