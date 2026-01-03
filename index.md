@@ -2,9 +2,8 @@
 
 ## Index
 
-**Creational Design Patterns**  
-
-1. [Singleton](./Singleton.md)
+1. [Creational](./Creational.md)
+2. [Singleton](./Singleton.md)
 
 Builder
 
