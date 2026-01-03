@@ -17,6 +17,8 @@ Factory
 3. [SAGA](./SAGA.md)
 4. [API Gateway](./API-Gateway.md)
 5. [Database per Service](./Database-per-Service.md)
+6. [Circuit Breaker](./Circuit-Breaker.md)
+
 
 
 Message Brokers
