@@ -115,3 +115,7 @@ TypeScript will throw an error.
 This is the "gatekeeper".  
 If the instance doesn't exist yet, it creates one.  
 If it already exists, it simply returns the existing one.
+
+## References
+
+* [7 Design Patterns EVERY Developer Should Know](https://www.youtube.com/watch?v=BJatgOiiht4)

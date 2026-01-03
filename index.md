@@ -2,18 +2,33 @@
 
 ## Index
 
-1. [CQRS](./CQRS.md)
-2. [Event Sourcing](./Event-Sourcing.md)
-3. [SAGA](./SAGA.md)
-4. [API Gateway](./API-Gateway.md)
-5. [Singleton](./Singleton.md)
+**Creational Design Patterns**  
 
-
-Singleton
+1. [Singleton](./Singleton.md)
 
 Builder
 
 Factory
+
+**Microservices Design Patterns**  
+
+1. [Event Sourcing](./Event-Sourcing.md)
+2. [CQRS](./CQRS.md)
+3. [SAGA](./SAGA.md)
+4. [API Gateway](./API-Gateway.md)
+5. [Database per Service](./Database-per-Service.md)
+
+
+Message Brokers
+Amazon SQS
+Kafka
+RabbitMQ
+
+What  
+Why  
+How  
+Pros  
+Cons  
 
 Eventual Consistency
 
@@ -40,5 +55,6 @@ The problem?
 * Maintenance overhead for similar tasks/features.
 
 
+## References
 
-Playlist - https://www.youtube.com/playlist?list=PLJq-63ZRPdBsPWE24vdpmgeRFMRQyjvvj
+* [Microservices](https://www.youtube.com/playlist?list=PLJq-63ZRPdBsPWE24vdpmgeRFMRQyjvvj)
