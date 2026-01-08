@@ -86,6 +86,18 @@ OR
 
 ---
 
+## Summary
+
+| Category | Intent or Purpose | Design Pattern |
+| :--- | :--- | :--- |
+| Creational | Creation of objects. How objects are created? | Singleton |
+| | | Prototype |
+| | | Factory |
+| | | Builder |
+
+
+---
+
 ## References
 
 * [Easiest way to understand types of design patterns](https://www.youtube.com/shorts/zfM1G3ys-d8)

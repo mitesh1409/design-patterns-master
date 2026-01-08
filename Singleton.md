@@ -1,4 +1,4 @@
-# Design Patterns - Singleton
+# Design Patterns -> Creational -> Singleton
 
 Singleton -> Creational Design Pattern
 
