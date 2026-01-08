@@ -52,7 +52,8 @@ not when you just want a global state.
 // Logger.ts
 
 export default class Logger {
-    // 1. Hold the single instance in a private static property
+    // 1. Hold the single instance in a private static property,
+    // it also protects that instance from being overwritten by other code, since it is private.
     private static instance: Logger;
 
     // 2. Make the constructor private so no one can call 'new Logger()'
