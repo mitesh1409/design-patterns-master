@@ -46,7 +46,7 @@ const logger = Logger.getInstance();
 Use Singleton design pattern when you genuinely need single instance guarantee,  
 not when you just want a global state.
 
-Example  
+**Example #1**  
 
 ```TypeScript
 // Logger.ts
@@ -115,3 +115,23 @@ TypeScript will throw an error.
 This is the "gatekeeper".  
 If the instance doesn't exist yet, it creates one.  
 If it already exists, it simply returns the existing one.
+
+**Example #2**  
+
+```JavaScript
+// appSettings.ts
+
+export default const APP_SETTINGS = {
+    theme: 'Dark',
+    timezone: 'Asia/Kolkata',
+    // ...
+};
+```
+
+In JavaScript/TypeScript, modules are singletons by default.  
+When you import `APP_SETTINGS` in different files,  
+you get the same instance everywhere.
+
+So we don't need to explicitly implement the Singleton pattern here.
+
+> Different languages have different ways to implement Singleton pattern.
