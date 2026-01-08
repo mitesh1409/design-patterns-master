@@ -4,6 +4,7 @@
 
 1. [Design Patterns](./Design-Patterns.md)
 2. [Singleton](./Singleton.md)
+3. [Prototype](./Prototype.md)
 
 
 

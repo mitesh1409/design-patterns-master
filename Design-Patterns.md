@@ -118,3 +118,4 @@ OR
 
 * [Easiest way to understand types of design patterns](https://www.youtube.com/shorts/zfM1G3ys-d8)
 * [7 Design Patterns EVERY Developer Should Know](https://www.youtube.com/watch?v=BJatgOiiht4)
+* [The Catalog of Design Patterns](https://refactoring.guru/design-patterns/catalog)

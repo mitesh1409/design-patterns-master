@@ -1,5 +1,22 @@
 # Design Patterns -> Creational -> Singleton
 
+## Problem
+
+In your application you may want:  
+
+1. Single instance of a class &
+2. That instance should be available globally
+
+Use cases are:  
+
+- Database Connection Instance
+- Application Logger Instance
+- Application Configuration/Settings Instance
+
+---
+
+## Solution
+
 Singleton design pattern is used whenever you want  
 only one instance of the class to be created.  
 Singleton instance is available globally so that everyone can use it.
