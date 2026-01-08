@@ -90,7 +90,7 @@ OR
 
 | Category | Intent or Purpose | Design Pattern |
 | :--- | :--- | :--- |
-| Creational | Creation of objects. How objects are created? | Singleton |
+| Creational | Creation of objects. How objects are created? | Singleton  Prototype  Factory  Builder |
 | | | Prototype |
 | | | Factory |
 | | | Builder |
