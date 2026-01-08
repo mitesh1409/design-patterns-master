@@ -44,7 +44,6 @@ JavaScript supports Prototypal inheritance out of the box.
 **Example #1**  
 
 ```TypeScript
-
 // Base credit card instance with some defaults.
 const baseCreditCard = {
     company: 'VISA',
@@ -53,7 +52,15 @@ const baseCreditCard = {
     expiryYear: 2030,
     customerName: 'John Wick',
 
-    getCredit() {
+    makePayment() {
+        //
+    },
+
+    payBill() {
+        //
+    },
+
+    getCreditBalance() {
         //
     },
 
@@ -74,14 +81,15 @@ const baseCreditCard = {
     }
 };
 
+// We cloned baseCreditCard.
 const customerCreditCard = Object.create(baseCreditCard);
 
-console.log('Before customerCreditCard', customerCreditCard);
+console.log('Initial customerCreditCard', customerCreditCard);
 
+// Modifying base object with customer specific details.
 customerCreditCard.company = 'Mastercard';
 customerCreditCard.number = '1111 2222 3333';
 customerCreditCard.customerName = 'Peter Parker';
-
 customerCreditCard.addRewards = function() {
     console.log('Add rewards...');
 }
@@ -89,6 +97,5 @@ customerCreditCard.redeemRewards = function() {
     console.log('Redeem rewards...');
 }
 
-console.log('After customerCreditCard', customerCreditCard);
-
+console.log('After modification customerCreditCard', customerCreditCard);
 ```
