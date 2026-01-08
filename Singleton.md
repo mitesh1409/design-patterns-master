@@ -1,7 +1,5 @@
 # Design Patterns -> Creational -> Singleton
 
-Singleton -> Creational Design Pattern
-
 Singleton design pattern is used whenever you want  
 only one instance of the class to be created.  
 Singleton instance is available globally so that everyone can use it.
@@ -14,7 +12,7 @@ Examples are:
 
 - Database Connection Instance
 - Application Logger Instance
-- Application Configuration Instance
+- Application Configuration/Settings Instance
 
 ```TypeScript
 // Bad - Multiple loggers creating chaos
@@ -115,7 +113,3 @@ TypeScript will throw an error.
 This is the "gatekeeper".  
 If the instance doesn't exist yet, it creates one.  
 If it already exists, it simply returns the existing one.
-
-## References
-
-* [7 Design Patterns EVERY Developer Should Know](https://www.youtube.com/watch?v=BJatgOiiht4)

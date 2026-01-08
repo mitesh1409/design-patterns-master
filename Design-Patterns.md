@@ -40,10 +40,17 @@ All of these deal with creation of objects.
 ## #2 Structural
 
 **Problem**  
-How objects are related to each other? OR
-Relationship between objects OR
-What will be the relationship between the objects? OR
-How do we structure this objects to form a bigger structure or a bigger module?
+How objects are related to each other?  
+OR  
+Relationship between objects.  
+OR  
+What will be the relationship between the objects?  
+OR  
+How do we structure this objects to form a bigger structure or a bigger module?  
+OR  
+Think of them as blueprints for building  
+larger structures from individual pieces.  
+Like building something big using multiple Lego blocks or smaller Lego structures.
 
 **Solution**  
 Structural Design Patterns
@@ -64,9 +71,13 @@ OR
 ## #3 Behavioral
 
 **Problem**  
-How objects will communicate with each other? OR
-Communication between objects OR
-How they will behave with each other?
+How objects will communicate with each other?  
+OR  
+Communication between objects.  
+OR  
+How they will behave with each other?  
+OR  
+How they interact and distribute responsibility.
 
 **Solution**  
 Behavioral Design Patterns
@@ -106,3 +117,4 @@ OR
 ## References
 
 * [Easiest way to understand types of design patterns](https://www.youtube.com/shorts/zfM1G3ys-d8)
+* [7 Design Patterns EVERY Developer Should Know](https://www.youtube.com/watch?v=BJatgOiiht4)
