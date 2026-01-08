@@ -7,4 +7,5 @@ Types of Creational Design Patterns are:
 * Prototype
 * Singleton
 * Factory
+* AbstractFactory
 * Builder
