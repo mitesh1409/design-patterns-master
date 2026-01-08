@@ -94,7 +94,12 @@ OR
 | | | Prototype |
 | | | Factory |
 | | | Builder |
-
+| Structural | Relationship between objects. How objects relate to each other? | Adapter |
+| | | Composite |
+| | | Facade |
+| Behavioral | Communication between objects. How they will behave with each other? | Command |
+| | | Strategy |
+| | | Observer |
 
 ---
 
