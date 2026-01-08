@@ -59,6 +59,9 @@ const logger = Logger.getInstance();
 - Threading issues
     Race conditions during instance creation.
     Need thread-safe implementation.
+    This problem is there in multi-threaded languages like Java, C++.
+    Node.js is single-threaded - Node.js runs your JavaScript on a  
+    single-threaded event loop. So there is no race condition here.
 
 Use Singleton design pattern when you genuinely need single instance guarantee,  
 not when you just want a global state.
