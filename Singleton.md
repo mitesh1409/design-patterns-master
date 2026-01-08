@@ -8,6 +8,8 @@ Basically, any situation where multiple instances of a class
 can lead to some issue or conflict,  
 you can think of using Singleton design pattern.  
 
+> We can say that a Singleton is glorified Global variable.
+
 Examples are:  
 
 - Database Connection Instance
