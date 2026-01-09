@@ -116,6 +116,14 @@ class CreditCard implements Prototype {
     expiryYear: Number;
     customerName: String;
 
+    constructor(company, number, expiryMonth, expiryYear, customerName) {
+        this.company = company;
+        this.number = number;
+        this.expiryMonth = expiryMonth;
+        this.expiryYear = expiryYear;
+        this.customerName = customerName;
+    }
+
     makePayment() {
         //
     },
@@ -164,6 +172,13 @@ class CreditCard implements Prototype {
 }
 
 // Usage
+const visaCreditCard = new CreditCard('VISA', '123456789012', 12, 2030, 'John Wick');
+const mastercardCreditCard = new CreditCard('Mastercard', '111122223333', 12, 2030, 'John Wick');
+const rupayCreditCard = new CreditCard('Rupay', '999988887777', 12, 2030, 'John Wick');
 
-
+// When a customer selects VISA credit card, we can easily clone visaCreditCard and then do 
+// customer specific changes on that instance.
+const customerCard = visaCreditCard.clone();
+customerCard.number = '222233335555';
+customerCard.customerName = 'Manoj Bajpayee';
 ```
