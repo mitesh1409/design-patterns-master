@@ -99,3 +99,71 @@ customerCreditCard.redeemRewards = function() {
 
 console.log('After modification customerCreditCard', customerCreditCard);
 ```
+
+---
+
+**Example #2**  
+
+```TypeScript
+interface Prototype {
+    clone(): Prototype
+}
+
+class CreditCard implements Prototype {
+    company: String;
+    number: String;
+    expiryMonth: Number;
+    expiryYear: Number;
+    customerName: String;
+
+    makePayment() {
+        //
+    },
+
+    payBill() {
+        //
+    },
+
+    getCreditBalance() {
+        //
+    },
+
+    generateStatement() {
+        //
+    },
+
+    getStatement() {
+        //
+    },
+
+    applyOverdueCharges() {
+        //
+    },
+
+    applyInterest() {
+        //
+    }
+
+    clone(): CreditCard {
+        // // Using JSON.parse(JSON.stringify(targetObject))
+        // const clonedInstance = JSON.parse(JSON.stringify(this));
+
+        // OR
+
+        // The structuredClone() method of the Window interface
+        // The structuredClone() global function in Node.js
+        const clonedInstance = structuredClone(this);
+
+        // OR
+
+        // // Library like Lodash's _.cloneDeep()
+        // const clonedInstance = _.cloneDeep(this);
+
+        return clonedInstance;
+    }
+}
+
+// Usage
+
+
+```
