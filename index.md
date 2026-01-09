@@ -6,6 +6,7 @@
 2. [Singleton](./Singleton.md)
 3. [Prototype](./Prototype.md)
 4. [Builder](./Builder.md)
+5. [Factory](./Factory.md)
 
 
 
