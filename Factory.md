@@ -146,7 +146,6 @@ runBusinessLogic(new SeaLogistics());
 **Example #2**
 
 ```TypeScript
-
 interface Button {}
 
 class IOSButton() implements Button {}
@@ -181,3 +180,51 @@ As we can see, the benefits of the above code are:
 * The button creation logic is moved into the ButtonFactory class. We followed SRP, DRY here.
   SRP - ButtonFactory has single responsibility - to create a button as per the OS.
   DRY - Without Factory the button creation logic was getting repeated, after using Factory it is moved into a common place ButtonFactory class.
+
+---
+
+**Example #3**
+
+```TypeScript
+// Without Factory
+const userType = 'admin';
+const userData = {
+    id: 1001,
+    name: 'John Wick'
+};
+
+let user: User;
+
+if (userType === 'admin') {
+    user = new AdminUser(userData);
+} else if (userType === 'moderator') {
+    user = new ModeratorUser(userData);
+} else {
+    user = new RegularUser(userData);
+}
+
+// With Factory
+class UserFactory {
+    static create(
+        userType: 'admin' | 'moderator' | 'regular',
+        userData: UserData
+    ): User {
+        switch (userType) {
+            case 'admin':
+                return new AdminUser(userData);
+            case 'moderator':
+                return new ModeratorUser(userData);
+            case 'regular':
+                return new RegularUser(userData);
+            default:
+                throw new Error(`Invalid user type ${userType}`);
+        }
+    }
+}
+
+const cleanUser = UserFactory.create(userType, userData);
+```
+
+All of the user creation logic is encapsulated inside the UserFactory class.
+And then in our application when we need to create a user we just use this UserFactory class.
+SRP, DRY principles are followed here.
