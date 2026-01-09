@@ -59,6 +59,8 @@ if (logistics === 'road') {
 Factory Method is a creational design pattern that provides an interface for creating objects in a  
 superclass, but allows subclasses to alter the type of objects that will be created.
 
+**Example #1**
+
 ```TypeScript
 // 1. The Product interface declares the operations that all 
 //    concrete products must implement.
@@ -138,3 +140,44 @@ runBusinessLogic(new SeaLogistics());
 * **Single Responsibility:** The code that creates products is moved to one place (the concrete creators), making the rest of the application cleaner.
 
 > The "Magic" of the Factory Method is that the base `Logistics` class handles the delivery process, but it **defers** the decision of *which* vehicle to use to its subclasses.
+
+---
+
+**Example #2**
+
+```TypeScript
+
+interface Button {}
+
+class IOSButton() implements Button {}
+
+class AndroidButton() implements Button {}
+
+// Without Factory pattern
+const os = 'ios';
+
+const button1 = os === 'ios' ? new IOSButton() : new AndroidButton();
+const button2 = os === 'ios' ? new IOSButton() : new AndroidButton();
+
+// With Factory pattern
+class ButtonFactory {
+    public static createButton(os: String): Button {
+        if (os === 'ios') {
+            return new IOSButton();
+        }
+
+        if (os === 'Android') {
+            return new AndroidButton();
+        }
+    }
+}
+
+const button1 = ButtonFactory.createButton('ios');
+const button2 = ButtonFactory.createButton('android');
+```
+
+As we can see, the benefits of the above code are:  
+
+* The button creation logic is moved into the ButtonFactory class. We followed SRP, DRY here.
+  SRP - ButtonFactory has single responsibility - to create a button as per the OS.
+  DRY - Without Factory the button creation logic was getting repeated, after using Factory it is moved into a common place ButtonFactory class.
