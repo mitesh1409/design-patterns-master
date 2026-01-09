@@ -105,11 +105,11 @@ console.log('After modification customerCreditCard', customerCreditCard);
 **Example #2**  
 
 ```TypeScript
-interface Prototype {
-    clone(): Prototype
+interface CreditCardPrototype {
+    clone(): CreditCardPrototype
 }
 
-class CreditCard implements Prototype {
+class CreditCard implements CreditCardPrototype {
     company: String;
     number: String;
     expiryMonth: Number;
@@ -152,7 +152,7 @@ class CreditCard implements Prototype {
         //
     }
 
-    clone(): CreditCard {
+    clone(): CreditCardPrototype {
         // // Using JSON.parse(JSON.stringify(targetObject))
         // const clonedInstance = JSON.parse(JSON.stringify(this));
 
