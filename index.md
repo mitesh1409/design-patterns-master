@@ -9,6 +9,7 @@
 5. [Factory](./Factory.md)
 6. [Abstract Factory](./Abstract-Factory.md)
 7. [Facade](./Facade.md)
+8. [Proxy](./Proxy.md)
 
 
 
