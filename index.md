@@ -7,6 +7,7 @@
 3. [Prototype](./Prototype.md)
 4. [Builder](./Builder.md)
 5. [Factory](./Factory.md)
+6. [Abstract Factory](./Abstract-Factory.md)
 
 
 
