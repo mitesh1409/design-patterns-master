@@ -10,8 +10,10 @@
 6. [Abstract Factory](./Abstract-Factory.md)
 7. [Facade](./Facade.md)
 8. [Proxy](./Proxy.md)
-
-
+9. [Adapter](./Adapter.md)
+10. [Strategy](./Strategy.md)
+11. [Observer](./Observer.md)
+12. [Command](./Command.md)
 
 Builder
 

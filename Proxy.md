@@ -1,5 +1,7 @@
 # Design Patterns -> Structural -> Proxy
 
+Proxy is a structural design pattern that lets you provide a substitute or placeholder for another object. A proxy controls access to the original object, allowing you to perform something either before or after the request gets through to the original object.
+
 The Proxy design pattern is like having a **personal assistant**. Instead of talking directly to a busy manager (the "Real Subject"), you talk to the assistant (the "Proxy"). The assistant can handle simple requests, screen calls, or wait until the manager is actually free before passing a message along.
 
 In programming, a Proxy is a structural design pattern that lets you provide a substitute or placeholder for another object. A proxy controls access to the original object, allowing you to perform something either before or after the request reaches the original object.
@@ -45,7 +47,7 @@ When the Proxy receives a request, it can:
 
 To implement this, both the Real Subject and the Proxy should follow the same interface. This way, the client doesn't even know they are talking to a proxy.
 
-**Example**  
+**Example #1**  
 
 ```typescript
 // 1. The common interface
@@ -102,3 +104,9 @@ proxy.renderVideo("101");
 * **Performance:** You save memory by not loading heavy objects until they are needed.
 * **Security:** You can add a check inside the proxy to see if a user is "Admin" before calling the real service.
 * **Clean Code:** The original service stays focused on its main job, while the proxy handles the "meta" tasks like logging or caching.
+
+---
+
+**Example #2**
+
+Debit Card, Credit Card, UPI etc. are Proxy for the real Bank Account.
