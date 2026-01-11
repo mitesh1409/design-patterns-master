@@ -15,10 +15,6 @@
 11. [Observer](./Observer.md)
 12. [Command](./Command.md)
 
-Builder
-
-Factory
-
 **Microservices Design Patterns**  
 
 1. [Event Sourcing](./Event-Sourcing.md)
