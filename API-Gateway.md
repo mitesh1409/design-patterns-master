@@ -1,8 +1,8 @@
-# Design Patterns -> Microservices Architecture -> API Gateway
+# Microservices Design Patterns -> API Gateway
 
 ## Analogy
 
-It is like receptionist for your Microservices Application.
+It is like a receptionist for your Microservices Application.
 
 ---
 
