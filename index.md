@@ -19,6 +19,7 @@
 15. [Database per Service](./Database-per-Service.md)
 16. [API Gateway](./API-Gateway.md)
 17. [Service Discovery](./Service-Discovery.md)
+18. [Inter-Service Communication](./Inter-Service-Communication.md)
 
 4. [SAGA](./SAGA.md)
 6. [Circuit Breaker](./Circuit-Breaker.md)
@@ -28,7 +29,6 @@
 
 
 Prep List
-5. Inter-Service Communication
 6. Saga Pattern
 7. Event-Driven Architecture
 8. Circuit Breaker
