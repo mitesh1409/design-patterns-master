@@ -20,21 +20,13 @@
 16. [API Gateway](./API-Gateway.md)
 17. [Service Discovery](./Service-Discovery.md)
 18. [Inter-Service Communication](./Inter-Service-Communication.md)
-
-4. [SAGA](./SAGA.md)
-6. [Circuit Breaker](./Circuit-Breaker.md)
-2. [CQRS](./CQRS.md)
-3. [Event Sourcing](./Event-Sourcing.md)
-7. [Side Car](./Side-Car.md)
-
-
-Prep List
-6. Saga Pattern
-7. Event-Driven Architecture
-8. Circuit Breaker
-9. Retry + Timeout
-10. CQRS
-
+19. [SAGA](./SAGA.md)
+20. [Event-Driven Architecture](./Event-Driven-Architecture.md)
+21. [Circuit Breaker](./Circuit-Breaker.md)
+22. [Retry + Timeout](./Retry-+-Timeout.md)
+23. [CQRS](./CQRS.md)
+24. [Event Sourcing](./Event-Sourcing.md)
+25. [Side Car](./Side-Car.md)
 
 
 Transactional Outbox Pattern
