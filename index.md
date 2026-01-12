@@ -14,17 +14,33 @@
 10. [Strategy](./Strategy.md)
 11. [Observer](./Observer.md)
 12. [Command](./Command.md)
+13. [Microservices Design Patterns](./Microservices-Design-Patterns.md)
+14. [Service Decomposition](./Service-Decomposition.md)
+15. [Database per Service](./Database-per-Service.md)
+16. [API Gateway](./API-Gateway.md)
+17. [Service Discovery](./Service-Discovery.md)
 
-**Microservices Design Patterns**  
-
-1. [Event Sourcing](./Event-Sourcing.md)
-2. [CQRS](./CQRS.md)
-3. [SAGA](./SAGA.md)
-4. [API Gateway](./API-Gateway.md)
-5. [Database per Service](./Database-per-Service.md)
+4. [SAGA](./SAGA.md)
 6. [Circuit Breaker](./Circuit-Breaker.md)
+2. [CQRS](./CQRS.md)
+3. [Event Sourcing](./Event-Sourcing.md)
+7. [Side Car](./Side-Car.md)
 
 
+Prep List
+5. Inter-Service Communication
+6. Saga Pattern
+7. Event-Driven Architecture
+8. Circuit Breaker
+9. Retry + Timeout
+10. CQRS
+
+
+
+Transactional Outbox Pattern
+This pattern helps to sync your DB and message queue without losing events.
+
+---
 
 Message Brokers
 Amazon SQS

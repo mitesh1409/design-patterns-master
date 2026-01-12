@@ -1,4 +1,10 @@
-# Design Patterns - API Gateway
+# Design Patterns -> Microservices Architecture -> API Gateway
+
+## Analogy
+
+It is like receptionist for your Microservices Application.
+
+---
 
 ## Direct Communication between Client <-> Microservices without API Gateway
 
@@ -42,7 +48,7 @@ So client has to call multiple APIs to get all of these data.
 With API Gateway in place, we can do the following:  
 
 - Routing
-- Middlewares (boilerplate tasks like authentication, rate limiting etc. which are common across all the services)
+- Middlewares (boilerplate tasks like authentication, rate limiting/throttling etc. which are common across all the services)
 - Transform data formats (requests/responses)
 - Aggregate responses from multiple services
 - Enforce security policies handling tasks like authentication & routing
