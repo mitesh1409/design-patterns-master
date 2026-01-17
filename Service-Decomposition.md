@@ -248,10 +248,7 @@ app.listen(3002, () => {
 
 ---
 
-Below are **clear, concise, interview-ready answers** for **Service Decomposition**.
-Language is intentionally **simple and direct**, suitable for quick recall.
-
----
+## Interview Questions
 
 ## Conceptual
 

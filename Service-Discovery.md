@@ -195,9 +195,7 @@ Correct answer:
 
 ---
 
-Below are **short, clear, interview-ready answers** for **Service Discovery**, using **simple language** and **practical wording**.
-
----
+## Interview Questions
 
 ## Conceptual
 

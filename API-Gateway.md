@@ -308,10 +308,7 @@ Client does **not** know:
 
 ---
 
-Below are **clear, short, and simple interview answers** for **API Gateway**.
-They are phrased for **quick recall and confident delivery**.
-
----
+## Interview Questions
 
 ## Conceptual
 

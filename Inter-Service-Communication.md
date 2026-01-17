@@ -235,9 +235,7 @@ Correct answer:
 
 ---
 
-Below are **clear, short, and interview-ready answers** for **Inter-Service Communication**, using **simple language** and **practical framing**.
-
----
+## Interview Questions
 
 ## Conceptual
 
