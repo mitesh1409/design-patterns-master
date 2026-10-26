@@ -24,6 +24,11 @@ In short copying/cloning an object is very tough if not impossible.
 
 Prototype = Clone
 
+- Interface -> ICloneable, it has a single method clone().
+- When you want Prototype/Clone of an object then your class must implement ICloneable.
+- And then call clone() method on an object to get its clone/prototype.
+- You don't need to worry about how the cloning works, it is handled by class by implementing ICloneable interface.
+
 The Prototype pattern delegates the cloning process to the actual objects that are being cloned. The pattern declares a common interface for all objects that support cloning. This interface lets you clone an object without coupling your code to the class of that object. Usually, such an interface contains just a single clone method.
 
 The implementation of the clone method is very similar in all classes. The method creates an object of the current class and carries over all of the field values of the old object into the new one. You can even copy private fields because most programming languages let objects access private fields of other objects that belong to the same class.
