@@ -62,14 +62,12 @@ superclass, but allows subclasses to alter the type of objects that will be crea
 **Example #1**
 
 ```TypeScript
-// 1. The Product interface declares the operations that all 
-//    concrete products must implement.
+// Interface to define a common type.
+// Here we have Transport type.
 interface Transport {
     deliver(): void;
 }
 
-// 2. Concrete Products provide various implementations of the 
-//    Product interface.
 class Truck implements Transport {
     deliver(): void {
         console.log("Delivering by land in a box via Truck.");
@@ -82,18 +80,16 @@ class Ship implements Transport {
     }
 }
 
-// 3. The Creator class (Logistics) declares the factory method 
-//    that returns an object of a Product class.
 abstract class Logistics {
     // This is the Factory Method
     public abstract createTransport(): Transport;
 
-    // The Creator's primary responsibility isn't creating products. 
-    // It usually contains some core business logic that relies on Product objects.
+    // The Creator's primary responsibility isn't creating objects. 
+    // It usually contains some core business logic that relies on objects.
     public planDelivery(): void {
-        // Call the factory method to create a Product object.
+        // Call the factory method to create an object.
         const transport = this.createTransport();
-        // Now, use the product.
+        // Now, use the object.
         console.log("Logistics: The same creator's code has just started the delivery.");
         transport.deliver();
     }
