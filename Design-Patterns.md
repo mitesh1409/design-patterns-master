@@ -27,11 +27,11 @@ Creational Design Patterns
 
 Creational Design Patterns are:
 
-* Prototype
-* Singleton
-* Factory
-  * Abstract Factory
-* Builder
+* [Prototype](./Prototype.md)
+* [Singleton](./Singleton.md)
+* [Factory](./Factory.md)
+  * [Abstract Factory](./Abstract-Factory.md)
+* [Builder](./Builder.md)
 
 All of these deal with creation of objects.
 
@@ -57,14 +57,10 @@ Structural Design Patterns
 
 Structural Design Patterns are:
 
-* Facade
+* [Facade](./Facade.md)
+* [Proxy](./Proxy.md)
+* [Adapter](./Adapter.md)
 * Composite
-* Adapter
-
-OR
-
-* Facade
-* Proxy
 
 ---
 
@@ -84,14 +80,10 @@ Behavioral Design Patterns
 
 Behavioral Design Patterns are:  
 
-* Command
-* Strategy
-* Observer
-
-OR
-
+* [Command](./Command.md)
+* [Strategy](./Strategy.md)
+* [Observer](./Observer.md)
 * Iterator
-* Observer
 * Mediator
 * State
 
