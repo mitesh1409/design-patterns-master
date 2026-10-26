@@ -187,3 +187,9 @@ const customerCard = visaCreditCard.clone();
 customerCard.number = '222233335555';
 customerCard.customerName = 'Manoj Bajpayee';
 ```
+
+---
+
+@todo
+
+Add examples for Python.

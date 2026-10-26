@@ -156,3 +156,11 @@ you get the same instance everywhere.
 So we don't need to explicitly implement the Singleton pattern here.
 
 > Different languages have different ways to implement Singleton pattern.
+
+---
+
+@todo
+
+Add examples for Python.
+
+In Python, modules should be singleton like JavaScript/TypeScript, confirm with an example.  
